@@ -1,6 +1,6 @@
 class Hero < ApplicationRecord
-  enum h_class: [:Warrior, :Specialist, :Support, :Assassin]
-  enum h_game: [:Warcraft, :StarCraft, :Diablo, :Overwatch, :Blizzard]
+  # enum h_class: [:Warrior, :Specialist, :Support, :Assassin]
+  # enum h_game: [:Warcraft, :StarCraft, :Diablo, :Overwatch, :Blizzard]
   
   
   def self.random
