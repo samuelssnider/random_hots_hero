@@ -6,37 +6,20 @@
   </head>
   <body>
     <div>
-      <div>
-        True Random: <%= @heroes.random.h_name %>
-      </div>
-      <div>
-        Tank: <%= @heroes.tank.h_name %>
-      </div>
-      <div>
-        Specialist: <%= @heroes.spec.h_name %>
-      </div>
-      <div>
-        Support: <%= @heroes.sup.h_name %>
-      </div>
-      <div>
-        Assassin: <%= @heroes.assn.h_name %>
-      </div>
-      <div>
-        Warcraft: <%= @heroes.wc.h_name %>
-      </div>
-      <div>
-        StarCraft: <%= @heroes.sc.h_name %>
-      </div>
-      <div>
-        Diablo: <%= @heroes.dibs.h_name %>
-      </div>
-      <div>
-        Overwatch: <%= @heroes.ow.h_name %>
-      </div>
-      <div>
-        Blizzard (Always TLV): <%= @heroes.blizz.h_name %>
-      </div>
-    </div>
+      <table>
+        <th>Specification</th>
+        <th>Hero</th>
+        <tr><td>True Random</td><td><%= @heroes.random.h_name%></td></tr>
+        <tr><td>Warrior</td><td><%= @heroes.tank.h_name%></td></tr>
+        <tr><td>Specialist</td><td><%= @heroes.spec.h_name%></td></tr>
+        <tr><td>Support</td><td><%= @heroes.sup.h_name%></td></tr>
+        <tr><td>Assassin</td><td><%= @heroes.assn.h_name%></td></tr>
+        <tr><td>Warcraft</td><td><%= @heroes.wc.h_name%></td></tr>
+        <tr><td>StarCraft</td><td><%= @heroes.sc.h_name%></td></tr>
+        <tr><td>Diablo</td><td><%= @heroes.dibs.h_name%></td></tr>
+        <tr><td>Overwatch</td><td><%= @heroes.ow.h_name%></td></tr>
+        <tr><td>Blizzard (Always TLV)</td><td><%= @heroes.blizz.h_name%></td></tr>
+      </table>
   </body>
 </html>
 
