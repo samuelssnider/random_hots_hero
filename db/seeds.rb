@@ -5,10 +5,11 @@ heroes = CSV.foreach "./db/data/characters.csv", headers: true, header_converter
 
 heroes.each do |hero|
   hero = hero.to_h
+  require 'pry'; binding.pry;
   puts hero[:name]
-  Hero.create!(title:      hero[:name],
-                class:      hero[:class],
-                game:       hero[:hero],
-                created_at: hero[:created_at]
+  Hero.create!(name:      hero[:name],
+               class:      hero[:class],
+               game:       hero[:hero],
+               created_at: hero[:created_at]
               )
 end
