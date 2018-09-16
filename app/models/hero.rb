@@ -1,5 +1,4 @@
 class Hero < ApplicationRecord
-  belongs_to :image
-  enum class: [:Warrior, :Specialist, :Support, :Assassin]
-  enum game: [:Warcraft, :StarCraft, :Diablo, :Overwatch, :Blizzard]
+  enum h_class: [:Warrior, :Specialist, :Support, :Assassin]
+  enum h_game: [:Warcraft, :StarCraft, :Diablo, :Overwatch, :Blizzard]
 end

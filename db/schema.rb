@@ -16,10 +16,10 @@ ActiveRecord::Schema.define(version: 2018_09_16_162841) do
   enable_extension "plpgsql"
 
   create_table "heros", force: :cascade do |t|
-    t.string "name"
-    t.string "class"
-    t.string "game"
-    t.date "created_at"
+    t.string "h_name"
+    t.string "h_class"
+    t.string "h_game"
+    t.date "h_created_at"
   end
 
 end
