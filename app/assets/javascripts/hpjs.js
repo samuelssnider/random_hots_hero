@@ -18,16 +18,23 @@ ready(function(){
 
 var addClickListener = function(clickable) {
   clickable.addEventListener('click', function(e) {
-    this.class += ' highlighted'
+    this.className += ' highlighted'
+    console.log(this)
   });
+}
+
+var arrayAdd = function(targets){
+  targets.forEach(function(target){
+    addClickListener(target)
+  })
 }
 
 var addClassListeners = function(e) {
   var tankIcon = document.querySelector('.tank-class');
-  addClickListener(tankIcon)
   var specIcon = document.querySelector('.spec-class');
   var supIcon = document.querySelector('.sup-class');
   var assnIcon = document.querySelector('.assn-class');
+  arrayAdd([tankIcon, specIcon, supIcon, assnIcon])
 };
 
 var addGameListeners = function(e) {
@@ -36,4 +43,6 @@ var addGameListeners = function(e) {
   var scIcon = document.querySelector('.game-sc');
   var wcIcon = document.querySelector('.game-wc');
   var owIcon = document.querySelector('.game-ow');
+  arrayAdd([blizzIcon, diabloIcon, scIcon, wcIcon, owIcon])
+  
 };
