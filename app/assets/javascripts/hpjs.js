@@ -16,13 +16,24 @@ ready(function(){
   
 });
 
+var addClickListener = function(clickable) {
+  clickable.addEventListener('click', function(e) {
+    this.class += ' highlighted'
+  });
+}
+
 var addClassListeners = function(e) {
   var tankIcon = document.querySelector('.tank-class');
+  addClickListener(tankIcon)
   var specIcon = document.querySelector('.spec-class');
   var supIcon = document.querySelector('.sup-class');
   var assnIcon = document.querySelector('.assn-class');
 };
 
 var addGameListeners = function(e) {
-  var secondHalf = document.querySelector('.second-half');
+  var blizzIcon = document.querySelector('.game-blizz');
+  var diabloIcon = document.querySelector('.game-diablo');
+  var scIcon = document.querySelector('.game-sc');
+  var wcIcon = document.querySelector('.game-wc');
+  var owIcon = document.querySelector('.game-ow');
 };

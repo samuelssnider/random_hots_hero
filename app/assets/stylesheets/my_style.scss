@@ -2,8 +2,8 @@
   display: grid;
   grid-gap: 10px;
   grid-template-columns: 50% 50%;
-  background-color: #fff;
-  color: #444;
+  background-color: #FFFFFF;
+  color: #444444;
 }
 th, td {
   border: 2px ridge #E6EEFF;
@@ -38,4 +38,7 @@ th, td {
 .icon-class{
 }
 .assn-class{
+}
+.highlighted{
+  background-color: yellow;
 }
