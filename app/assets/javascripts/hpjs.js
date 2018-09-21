@@ -18,8 +18,11 @@ ready(function(){
 
 var addClickListener = function(clickable) {
   clickable.addEventListener('click', function(e) {
-    this.className += ' highlighted'
-    console.log(this)
+    if(this.classList.includes('highlighted')){
+      this.classList
+    }
+      this.className += ' highlighted'
+      console.log(this)
   });
 }
 
