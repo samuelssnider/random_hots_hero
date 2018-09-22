@@ -47,5 +47,17 @@ var addGameListeners = function(e) {
   var wcIcon = document.querySelector('.game-wc');
   var owIcon = document.querySelector('.game-ow');
   arrayAdd([blizzIcon, diabloIcon, scIcon, wcIcon, owIcon])
-  
 };
+
+var picker = function(e) {
+  var blizzIcon = document.querySelector('.game-blizz');
+  var diabloIcon = document.querySelector('.game-diablo');
+  var scIcon = document.querySelector('.game-sc');
+  var wcIcon = document.querySelector('.game-wc');
+  var owIcon = document.querySelector('.game-ow');
+  var tankIcon = document.querySelector('.tank-class');
+  var specIcon = document.querySelector('.spec-class');
+  var supIcon = document.querySelector('.sup-class');
+  var assnIcon = document.querySelector('.assn-class');
+  
+}
