@@ -13,7 +13,6 @@ function ready(callback){
 ready(function(){
   addClassListeners();
   addGameListeners();
-  
 });
 
 var addClickListener = function(clickable) {
@@ -22,7 +21,7 @@ var addClickListener = function(clickable) {
       var marker = this.classList.remove('highlighted')
     }
     else {
-      this.className += ' highlighted'
+      this.classList.add('highlighted')
     }
   });
 }
