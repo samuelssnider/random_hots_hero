@@ -18,11 +18,14 @@ ready(function(){
 
 var addClickListener = function(clickable) {
   clickable.addEventListener('click', function(e) {
-    if(this.classList.includes('highlighted')){
-      this.classList
+    if(this.classList.value.includes('highlighted')) {
+      var marker = this.classList.remove('highlighted')
+      console.log('hey')
     }
+    else {
       this.className += ' highlighted'
-      console.log(this)
+      console.log('there')
+    }
   });
 }
 
