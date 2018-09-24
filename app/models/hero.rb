@@ -52,4 +52,8 @@ class Hero < ApplicationRecord
     list = Hero.where(h_game: "Blizzard")
     list.shuffle[0]
   end
+  
+  def self.that_hero
+    require 'pry'; binding.pry
+  end
 end

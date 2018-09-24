@@ -62,15 +62,16 @@ var addClickBtnListener = function(clickable) {
     var supIcon = document.querySelector('.sup-class');
     var assnIcon = document.querySelector('.assn-class');
     var mapHighlighted = buildObject([tankIcon, specIcon, supIcon, assnIcon, blizzIcon, diabloIcon, scIcon, wcIcon, owIcon]);
+    
   });
 }
 
 var buildObject = function(targets) {
   var mh = targets.map(target => {
     var hObj = {};
+    hObj["hidden"] = false
     hObj[target.classList[0]] = target.classList.value.includes('highlighted')
     return hObj
   });
-  console.log(mh)
   return mh
 }
