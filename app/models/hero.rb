@@ -3,8 +3,9 @@ class Hero < ApplicationRecord
   # enum h_game: [:Warcraft, :StarCraft, :Diablo, :Overwatch, :Blizzard]
   
   
+  
   def self.random
-    top = (self.count + 1)
+    top = (self.count + 2)
     Hero.find(Random.rand(top));
   end
   
@@ -54,6 +55,8 @@ class Hero < ApplicationRecord
   end
   
   def self.that_hero
-    require 'pry'; binding.pry
+    all.each do |hero|
+      JSON.parse(hero.h_name)
+    end
   end
 end

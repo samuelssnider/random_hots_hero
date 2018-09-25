@@ -69,9 +69,10 @@ var addClickBtnListener = function(clickable) {
 var buildObject = function(targets) {
   var mh = targets.map(target => {
     var hObj = {};
-    hObj["hidden"] = false
     hObj[target.classList[0]] = target.classList.value.includes('highlighted')
+    hObj["hidden"] = !hObj[target.classList[0]]
     return hObj
   });
+  console.log(mh)
   return mh
 }
