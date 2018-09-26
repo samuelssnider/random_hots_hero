@@ -2,8 +2,6 @@ class Hero < ApplicationRecord
   # enum h_class: [:Warrior, :Specialist, :Support, :Assassin]
   # enum h_game: [:Warcraft, :StarCraft, :Diablo, :Overwatch, :Blizzard]
   
-  
-  
   def self.random
     top = (self.count + 2)
     Hero.find(Random.rand(top));
@@ -55,8 +53,5 @@ class Hero < ApplicationRecord
   end
   
   def self.that_hero
-    all.each do |hero|
-      JSON.parse(hero.h_name)
-    end
   end
 end
