@@ -1,3 +1,5 @@
+var API = "http://localhost:3000"
+
 function ready(callback){
     // in case the document is already rendered
     if (document.readyState!='loading') callback();
@@ -51,18 +53,18 @@ var addGameListeners = function(e) {
 };
 
 var addClickBtnListener = function(clickable) {
+  var blizzIcon = document.querySelector('.game-blizz');
+  var diabloIcon = document.querySelector('.game-diablo');
+  var scIcon = document.querySelector('.game-sc');
+  var wcIcon = document.querySelector('.game-wc');
+  var owIcon = document.querySelector('.game-ow');
+  var tankIcon = document.querySelector('.tank-class');
+  var specIcon = document.querySelector('.spec-class');
+  var supIcon = document.querySelector('.sup-class');
+  var assnIcon = document.querySelector('.assn-class');
+  var mapHighlighted = buildObject([tankIcon, specIcon, supIcon, assnIcon, blizzIcon, diabloIcon, scIcon, wcIcon, owIcon]);
   clickable.addEventListener('click', function(e) {
-    var blizzIcon = document.querySelector('.game-blizz');
-    var diabloIcon = document.querySelector('.game-diablo');
-    var scIcon = document.querySelector('.game-sc');
-    var wcIcon = document.querySelector('.game-wc');
-    var owIcon = document.querySelector('.game-ow');
-    var tankIcon = document.querySelector('.tank-class');
-    var specIcon = document.querySelector('.spec-class');
-    var supIcon = document.querySelector('.sup-class');
-    var assnIcon = document.querySelector('.assn-class');
-    var mapHighlighted = buildObject([tankIcon, specIcon, supIcon, assnIcon, blizzIcon, diabloIcon, scIcon, wcIcon, owIcon]);
-    
+    return 
   });
 }
 
