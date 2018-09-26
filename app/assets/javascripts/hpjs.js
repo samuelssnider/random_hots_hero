@@ -64,7 +64,16 @@ var addClickBtnListener = function(clickable) {
   var assnIcon = document.querySelector('.assn-class');
   var mapHighlighted = buildObject([tankIcon, specIcon, supIcon, assnIcon, blizzIcon, diabloIcon, scIcon, wcIcon, owIcon]);
   clickable.addEventListener('click', function(e) {
-    return 
+    return $.ajax({
+      url: API + '/api/v1/heroes',
+      method: 'GET',
+    }).done(function(data) {
+      for(i = 0; data.length; i++) {
+        $('#full-metal').append('<span class="hero">' + data[i].name +' ' + '</span>');
+      }
+    }).fail(function() {
+      handleError();
+    })
   });
 }
 
@@ -75,6 +84,5 @@ var buildObject = function(targets) {
     hObj["hidden"] = !hObj[target.classList[0]]
     return hObj
   });
-  console.log(mh)
   return mh
 }
