@@ -68,8 +68,9 @@ var addClickBtnListener = function(clickable) {
       url: API + '/api/v1/heroes',
       method: 'GET',
     }).done(function(data) {
+      console.log(data)
       for(i = 0; data.length; i++) {
-        $('#full-metal').append('<span class="hero">' + data[i].name +' ' + '</span>');
+        $('.full-metal').append('<span class="hero">' + data[i]["h_name"]+' ' + '</span>');
       }
     }).fail(function() {
       handleError();
