@@ -36,36 +36,36 @@ var arrayAdd = function(targets){
 }
 
 var addClassListeners = function(e) {
-  var tankIcon = document.querySelector('.tank-class');
-  var specIcon = document.querySelector('.spec-class');
-  var supIcon = document.querySelector('.sup-class');
-  var assnIcon = document.querySelector('.assn-class');
+  var tankIcon = document.querySelector('.Warrior');
+  var specIcon = document.querySelector('.Specialist');
+  var supIcon = document.querySelector('.Support');
+  var assnIcon = document.querySelector('.Assassin');
   arrayAdd([tankIcon, specIcon, supIcon, assnIcon])
 };
 
 var addGameListeners = function(e) {
-  var blizzIcon = document.querySelector('.game-blizz');
-  var diabloIcon = document.querySelector('.game-diablo');
-  var scIcon = document.querySelector('.game-sc');
-  var wcIcon = document.querySelector('.game-wc');
-  var owIcon = document.querySelector('.game-ow');
+  var blizzIcon = document.querySelector('.Blizzard');
+  var diabloIcon = document.querySelector('.Diablo');
+  var scIcon = document.querySelector('.StarCraft');
+  var wcIcon = document.querySelector('.Warcraft');
+  var owIcon = document.querySelector('.Overwatch');
   arrayAdd([blizzIcon, diabloIcon, scIcon, wcIcon, owIcon])
 };
 
 var addClickBtnListener = function(clickable) {
-  var blizzIcon = document.querySelector('.game-blizz');
-  var diabloIcon = document.querySelector('.game-diablo');
-  var scIcon = document.querySelector('.game-sc');
-  var wcIcon = document.querySelector('.game-wc');
-  var owIcon = document.querySelector('.game-ow');
-  var tankIcon = document.querySelector('.tank-class');
-  var specIcon = document.querySelector('.spec-class');
-  var supIcon = document.querySelector('.sup-class');
-  var assnIcon = document.querySelector('.assn-class');
+  var blizzIcon = document.querySelector('.Blizzard');
+  var diabloIcon = document.querySelector('.Diablo');
+  var scIcon = document.querySelector('.StarCraft');
+  var wcIcon = document.querySelector('.Warcraft');
+  var owIcon = document.querySelector('.Overwatch');
+  var tankIcon = document.querySelector('.Warrior');
+  var specIcon = document.querySelector('.Specialist');
+  var supIcon = document.querySelector('.Support');
+  var assnIcon = document.querySelector('.Assassin');
   var mapHighlighted = buildObject([tankIcon, specIcon, supIcon, assnIcon, blizzIcon, diabloIcon, scIcon, wcIcon, owIcon]);
   clickable.addEventListener('click', function(e) {
     return $.ajax({
-      url: API + '/api/v1/heroes' + "?"+ trueFalse(mapHighlighted),
+      url: API + '/api/v1/heroes' + "?" + trueFalse(mapHighlighted),
       method: 'GET',
     }).done(function(data) {
       for(var i = 0;i < (data.length - 1); i++) {
