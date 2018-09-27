@@ -2,6 +2,8 @@ module Api
   module V1
     class HeroesController < ActionController::API
       def index
+        require 'pry'
+        binding.pry
         render json: Hero.all
       end
       

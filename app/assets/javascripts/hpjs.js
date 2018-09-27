@@ -65,17 +65,24 @@ var addClickBtnListener = function(clickable) {
   var mapHighlighted = buildObject([tankIcon, specIcon, supIcon, assnIcon, blizzIcon, diabloIcon, scIcon, wcIcon, owIcon]);
   clickable.addEventListener('click', function(e) {
     return $.ajax({
-      url: API + '/api/v1/heroes',
+      url: API + '/api/v1/heroes' + "?"+ trueFalse(mapHighlighted),
       method: 'GET',
     }).done(function(data) {
-      console.log(data)
-      for(i = 0; data.length; i++) {
-        $('.full-metal').append('<span class="hero">' + data[i]["h_name"]+' ' + '</span>');
+      for(var i = 0;i < (data.length - 1); i++) {
+        console.log(data[i]["h_name"])
+        $('#full-metal').append('<span class="hero">' + data[i]["h_name"]+' ' + '</span>');
       }
     }).fail(function() {
       handleError();
     })
   });
+}
+
+var trueFalse = function(heroMap) {
+  var map = heroMap.map(value => {
+    value["hidden"]
+  })
+  return map
 }
 
 var buildObject = function(targets) {
