@@ -52,6 +52,17 @@ var addGameListeners = function(e) {
   arrayAdd([blizzIcon, diabloIcon, scIcon, wcIcon, owIcon])
 };
 
+var appendHeroToTable = function(table, hero, begEnd) {
+  if (begEnd[0]){$(table).append(<'tr'>)}
+  $(table).append(`
+    <td>${data[i + 2]["h_name"]}</td>
+    <td class="${data[i + 2]["h_name"]}"> 
+      <input type="checkbox" status="checked">
+    </td>
+  `)
+  if (begEnd[1]){$(table).append(<'/tr'>)}
+}
+
 var addClickBtnListener = function(clickable) {
   var blizzIcon = document.querySelector('.Blizzard');
   var diabloIcon = document.querySelector('.Diablo');
@@ -68,16 +79,16 @@ var addClickBtnListener = function(clickable) {
       url: API + '/api/v1/heroes' + "?" + trueFalse(mapHighlighted),
       method: 'GET',
     }).done(function(data) {
-      for(var i = 0;i < (data.length - 1); i++) {
+      for(var i = 0;i < (data.length); i += 3) {
         console.log(data[i]["h_name"])
-        $('.full-metal').append(`<tr class="hero">
-                                  <td>${data[i]["h_name"]}</td>
-                                  <td class="${data[i]["h_name"]}"> 
-                                    <input type="checkbox">
-                                  </td>
-                                </tr>`);
-        //   $('.full-metal').append('<br/>')
-        // }
+        if( i % 2 == 1){
+          var table = '.jacket' 
+        } else{
+          var table = '.full-metal' 
+        }
+        appendHeroToTable(table, data[i], [true, false]);
+        appendHeroToTable(table, data[i + 2], [true, false]);
+        appendHeroToTable(table, data[i + 4], [true, false]);
       }
     }).fail(function() {
       handleError();
