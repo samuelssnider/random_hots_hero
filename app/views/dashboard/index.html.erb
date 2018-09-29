@@ -4,48 +4,49 @@
     <meta charset="utf-8">
     <title></title>
   </head>
-  <body class='wrapper'>
-    <div class='box a-col'>
-      <table>
-        <th>Specification</th>
-        <th>Hero</th>
-        <tr><td>True Random</td><td><%= @heroes.random.h_name%></td></tr>
-        <tr><td>Warrior</td><td><%= @heroes.tank.h_name%></td></tr>
-        <tr><td>Specialist</td><td><%= @heroes.spec.h_name%></td></tr>
-        <tr><td>Support</td><td><%= @heroes.sup.h_name%></td></tr>
-        <tr><td>Assassin</td><td><%= @heroes.assn.h_name%></td></tr>
-        <tr><td>Warcraft</td><td><%= @heroes.wc.h_name%></td></tr>
-        <tr><td>StarCraft</td><td><%= @heroes.sc.h_name%></td></tr>
-        <tr><td>Diablo</td><td><%= @heroes.dibs.h_name%></td></tr>
-        <tr><td>Overwatch</td><td><%= @heroes.ow.h_name%></td></tr>
-        <tr><td>Blizzard (Always TLV)</td><td><%= @heroes.blizz.h_name%></td></tr>
-      </table>
-    </div>
-    <div class='box b-col'>
-      <div class= 'box'>
-        <%= image_tag("IconTank.png",  class: "Warrior class-icon", width: "100") %>
-        <%= image_tag("IconSpecialist.png", class: "Specialist class-icon", width: "100") %>
-        <%= image_tag("IconSupport.png", class: "Support class-icon", width: "100") %>
-        <%= image_tag("IconAssassin.png", class: "Assassin class-icon", width: "90") %>
+  <body>
+    <div class='top-half'>
+      <div class='box a-col'>
+        <table>
+          <th>Specification</th>
+          <th>Hero</th>
+          <tr><td>True Random</td><td><%= @heroes.random.h_name%></td></tr>
+          <tr><td>Warrior</td><td><%= @heroes.tank.h_name%></td></tr>
+          <tr><td>Specialist</td><td><%= @heroes.spec.h_name%></td></tr>
+          <tr><td>Support</td><td><%= @heroes.sup.h_name%></td></tr>
+          <tr><td>Assassin</td><td><%= @heroes.assn.h_name%></td></tr>
+          <tr><td>Warcraft</td><td><%= @heroes.wc.h_name%></td></tr>
+          <tr><td>StarCraft</td><td><%= @heroes.sc.h_name%></td></tr>
+          <tr><td>Diablo</td><td><%= @heroes.dibs.h_name%></td></tr>
+          <tr><td>Overwatch</td><td><%= @heroes.ow.h_name%></td></tr>
+          <tr><td>Blizzard (Always TLV)</td><td><%= @heroes.blizz.h_name%></td></tr>
+        </table>
       </div>
-      <div class= 'box'>
-        <%= image_tag("IconBlizzard.png",  class: "Blizzard game-icon", width: "100") %>
-        <%= image_tag("IconDiablo.png",  class: "Diablo game-icon", width: "100") %>
-        <%= image_tag("IconStarcraft.png", class: "StarCraft game-icon", width: "100") %>
-        <%= image_tag("IconWarcraft.png", class: "Warcraft game-icon", width: "100") %>
-        <%= image_tag("IconOverwatch.png", class: "Overwatch game-icon", width: "100") %>
-      </div>
-      <div class='box just-center'>
-        <button class='pick-btn'>Pick</button>
+      <div class='box b-col'>
+        <div class= 'box'>
+          <%= image_tag("IconTank.png",  class: "Warrior class-icon", width: "100") %>
+          <%= image_tag("IconSpecialist.png", class: "Specialist class-icon", width: "100") %>
+          <%= image_tag("IconSupport.png", class: "Support class-icon", width: "100") %>
+          <%= image_tag("IconAssassin.png", class: "Assassin class-icon", width: "90") %>
+        </div>
+        <div class= 'box'>
+          <%= image_tag("IconBlizzard.png",  class: "Blizzard game-icon", width: "100") %>
+          <%= image_tag("IconDiablo.png",  class: "Diablo game-icon", width: "100") %>
+          <%= image_tag("IconStarcraft.png", class: "StarCraft game-icon", width: "100") %>
+          <%= image_tag("IconWarcraft.png", class: "Warcraft game-icon", width: "100") %>
+          <%= image_tag("IconOverwatch.png", class: "Overwatch game-icon", width: "100") %>
+        </div>
+        <div class='box just-center'>
+          <button class='pick-btn'>Pick</button>
+        </div>
       </div>
     </div>
-    <div class='box'>
-      <table class='full-metal'>
-      </table>
-    </div>
-    <div class='box'>
-      <table class='jacket'>
-      </table>
+    <div class='bot-half'>
+      <div class='box'>
+        <table class='full-metal'>
+        </table>
+      </div>
+      
     </div>
   </body>
   

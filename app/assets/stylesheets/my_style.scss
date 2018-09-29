@@ -1,7 +1,14 @@
-.wrapper {
+.top-half {
   display: grid;
   grid-gap: 10px;
   grid-template-columns: 50% 50%;
+  background-color: #FFFFFF;
+  color: #444444;
+}
+.bot-half{
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 100%;
   background-color: #FFFFFF;
   color: #444444;
 }

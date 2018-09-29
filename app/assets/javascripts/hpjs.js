@@ -14,6 +14,7 @@ function ready(callback){
 
 ready(function(){
   addClassListeners();
+  buildTable();
   addGameListeners();
   addClickBtnListener(document.querySelector('.pick-btn'));
 });
@@ -53,14 +54,38 @@ var addGameListeners = function(e) {
 };
 
 var appendHeroToTable = function(table, hero, begEnd) {
-  if (begEnd[0]){$(table).append(<'tr'>)}
-  $(table).append(`
-    <td>${data[i + 2]["h_name"]}</td>
-    <td class="${data[i + 2]["h_name"]}"> 
-      <input type="checkbox" status="checked">
-    </td>
-  `)
-  if (begEnd[1]){$(table).append(<'/tr'>)}
+  if (begEnd[0]){$(table).append('<tr>')}
+  if(hero){
+    $(table).append(`
+      <td>${hero["h_name"]}</td>
+      <td class="${hero["h_name"]}"> 
+        <input type="checkbox" status="checked">
+      </td>
+    `)
+  }
+  if (begEnd[1]){$(table).append('</tr>')}
+}
+
+var buildTable = function(e) {
+  return $.ajax({
+    url: API + '/api/v1/heroes' + "?" + trueFalse(mapHighlighted),
+    method: 'GET',
+  }).done(function(data) {
+    for(var i = 0;i < (data.length); i += 7) {
+      console.log(data[i]["h_name"])
+      var table = ('.full-metal')
+      appendHeroToTable(table, data[i],     [true, false]);
+      appendHeroToTable(table, data[i + 1], [false, false]);
+      appendHeroToTable(table, data[i + 2], [false, false]);
+      appendHeroToTable(table, data[i + 3], [false, false]);
+      appendHeroToTable(table, data[i + 4], [false, false]);
+      appendHeroToTable(table, data[i + 5], [false, false]);
+      appendHeroToTable(table, data[i + 6], [false, false]);
+      appendHeroToTable(table, data[i + 7], [false, true]);
+    }
+  }).fail(function() {
+    handleError();
+  })
 }
 
 var addClickBtnListener = function(clickable) {
@@ -75,24 +100,7 @@ var addClickBtnListener = function(clickable) {
   var assnIcon = document.querySelector('.Assassin');
   var mapHighlighted = buildObject([tankIcon, specIcon, supIcon, assnIcon, blizzIcon, diabloIcon, scIcon, wcIcon, owIcon]);
   clickable.addEventListener('click', function(e) {
-    return $.ajax({
-      url: API + '/api/v1/heroes' + "?" + trueFalse(mapHighlighted),
-      method: 'GET',
-    }).done(function(data) {
-      for(var i = 0;i < (data.length); i += 3) {
-        console.log(data[i]["h_name"])
-        if( i % 2 == 1){
-          var table = '.jacket' 
-        } else{
-          var table = '.full-metal' 
-        }
-        appendHeroToTable(table, data[i], [true, false]);
-        appendHeroToTable(table, data[i + 2], [true, false]);
-        appendHeroToTable(table, data[i + 4], [true, false]);
-      }
-    }).fail(function() {
-      handleError();
-    })
+    
   });
 }
 
