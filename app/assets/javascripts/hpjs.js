@@ -58,7 +58,7 @@ var appendHeroToTable = function(table, hero, begEnd) {
   if(hero){
     $(table).append(`
       <td>${hero["h_name"]}</td>
-      <td class="${hero["h_name"]}"> 
+      <td class="${hero["h_name"]} ${hero["h_game"]} ${hero["h_class"]}"> 
         <input type="checkbox" checked>
       </td>
     `)
