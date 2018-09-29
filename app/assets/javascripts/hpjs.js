@@ -73,14 +73,12 @@ var buildTable = function(e) {
   }).done(function(data) {
     var table = ('.full-metal')
       for(var i = 0;i < (data.length); i += 8) {
-        appendHeroToTable(table, data[i], [true, false])
-        appendHeroToTable(table, data[i + 1], [false, false])
-        appendHeroToTable(table, data[i + 2], [false, false])
-        appendHeroToTable(table, data[i + 3], [false, false])
-        appendHeroToTable(table, data[i + 4], [false, false])
-        appendHeroToTable(table, data[i + 5], [false, false])
-        appendHeroToTable(table, data[i + 6], [false, false])
-        appendHeroToTable(table, data[i + 7], [false, true])
+        for(var k = 0; k < 8; k++) {
+          beg = false; end = false
+          if(k === 0){beg = true}
+          if(k === 0){end = true}
+          appendHeroToTable(table, data[i + k], [beg, end])
+        }
       }
   }).fail(function(data) {
     handleError();
