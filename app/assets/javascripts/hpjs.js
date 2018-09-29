@@ -1,5 +1,5 @@
 var API = "http://localhost:3000"
-
+'use strict'
 function ready(callback){
     // in case the document is already rendered
     if (document.readyState!='loading') callback();
@@ -54,7 +54,6 @@ var addGameListeners = function(e) {
 };
 
 var appendHeroToTable = function(table, hero, begEnd) {
-  console.log([table, hero])
   if (begEnd[0]){$(table).append('<tr>')}
   if(hero){
     $(table).append(`
@@ -73,15 +72,17 @@ var buildTable = function(e) {
     method: 'GET',
   }).done(function(data) {
     var table = ('.full-metal')
-    for(var i = 0;i < (data.length); i += 8) {
-      for(var j = 0;j < 8; j++){
-        var beg = false; var end = false;
-        if(j = 0){beg = true}
-        if(j = 7){end = true}
-        appendHeroToTable(table, data[i + j], [beg, end]);
+      for(var i = 0;i < (data.length); i += 8) {
+        appendHeroToTable(table, data[i], [true, false])
+        appendHeroToTable(table, data[i + 1], [false, false])
+        appendHeroToTable(table, data[i + 2], [false, false])
+        appendHeroToTable(table, data[i + 3], [false, false])
+        appendHeroToTable(table, data[i + 4], [false, false])
+        appendHeroToTable(table, data[i + 5], [false, false])
+        appendHeroToTable(table, data[i + 6], [false, false])
+        appendHeroToTable(table, data[i + 7], [false, true])
       }
-    }
-  }).fail(function() {
+  }).fail(function(data) {
     handleError();
   })
 }
