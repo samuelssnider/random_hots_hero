@@ -70,7 +70,14 @@ var addClickBtnListener = function(clickable) {
     }).done(function(data) {
       for(var i = 0;i < (data.length - 1); i++) {
         console.log(data[i]["h_name"])
-        $('#full-metal').append('<span class="hero">' + data[i]["h_name"]+' ' + '</span>');
+        $('.full-metal').append(`<tr class="hero">
+                                  <td>${data[i]["h_name"]}</td>
+                                  <td class="${data[i]["h_name"]}"> 
+                                    <input type="checkbox">
+                                  </td>
+                                </tr>`);
+        //   $('.full-metal').append('<br/>')
+        // }
       }
     }).fail(function() {
       handleError();
