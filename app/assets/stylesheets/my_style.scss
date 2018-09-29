@@ -1,0 +1,44 @@
+.top-half {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 50% 50%;
+  background-color: #FFFFFF;
+  color: #444444;
+}
+.bot-half{
+  margin-top: .5rem;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 100%;
+  background-color: #FFFFFF;
+  color: #444444;
+}
+.full{
+}
+th, td {
+  border: 2px ridge #E6EEFF;
+}
+.a-col{
+  color: #fff;
+}
+.b-col{
+}
+.box {
+  background-color: #444444;  
+  color: #FFFFFF;
+  border-radius: 5px;
+  padding: 20px;
+  font-size: 150%;
+}
+.highlighted{
+  background-color: yellow;
+}
+.just-center{
+  justify-content: center;
+}
+.pick-btn{
+  font-size: 3rem;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}

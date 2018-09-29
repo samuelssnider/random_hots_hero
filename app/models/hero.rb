@@ -2,10 +2,9 @@ class Hero < ApplicationRecord
   # enum h_class: [:Warrior, :Specialist, :Support, :Assassin]
   # enum h_game: [:Warcraft, :StarCraft, :Diablo, :Overwatch, :Blizzard]
   
-  
   def self.random
-    top = (self.count + 1)
-    Hero.find(Random.rand(top));
+    top = (self.count)
+    Hero.find(Random.rand(top)+ 1);
   end
   
   def self.tank
@@ -51,5 +50,8 @@ class Hero < ApplicationRecord
   def self.blizz
     list = Hero.where(h_game: "Blizzard")
     list.shuffle[0]
+  end
+  
+  def self.that_hero
   end
 end
