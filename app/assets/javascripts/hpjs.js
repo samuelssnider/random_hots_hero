@@ -16,7 +16,8 @@ ready(function(){
   addClassListeners();
   buildTable();
   addGameListeners();
-  mapIcons(document.querySelector('.pick-btn'));
+  mapIcons();
+  addPickButtonListener(document.querySelector('.pick-btn'));
 });
 
 var addClickListener = function(clickable) {
@@ -104,7 +105,7 @@ var buildMap = function(e) {
 
 var addPickButtonListener = function(clickable){
   clickable.addEventListener('click', function(e) {
-    
+    console.log(buildObject(buildMap()))
   })
 }
 
