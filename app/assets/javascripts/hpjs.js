@@ -86,6 +86,10 @@ var buildTable = function(e) {
 }
 
 var mapIcons = function(clickable) {
+  return buildObject(buildMap());
+}
+
+var buildMap = function(e) {
   var blizzIcon = document.querySelector('.Blizzard');
   var diabloIcon = document.querySelector('.Diablo');
   var scIcon = document.querySelector('.StarCraft');
@@ -95,7 +99,7 @@ var mapIcons = function(clickable) {
   var specIcon = document.querySelector('.Specialist');
   var supIcon = document.querySelector('.Support');
   var assnIcon = document.querySelector('.Assassin');
-  return mapHighlighted = buildObject([tankIcon, specIcon, supIcon, assnIcon, blizzIcon, diabloIcon, scIcon, wcIcon, owIcon]);
+  return [tankIcon, specIcon, supIcon, assnIcon, blizzIcon, diabloIcon, scIcon, wcIcon, owIcon]
 }
 
 var addPickButtonListener = function(clickable){
