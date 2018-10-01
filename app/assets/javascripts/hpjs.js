@@ -16,7 +16,7 @@ ready(function(){
   addClassListeners();
   buildTable();
   addGameListeners();
-  addClickBtnListener(document.querySelector('.pick-btn'));
+  mapIcons(document.querySelector('.pick-btn'));
 });
 
 var addClickListener = function(clickable) {
@@ -68,7 +68,7 @@ var appendHeroToTable = function(table, hero, begEnd) {
 
 var buildTable = function(e) {
   return $.ajax({
-    url: API + '/api/v1/heroes' + "?" + trueFalse(addClickBtnListener()),
+    url: API + '/api/v1/heroes' + "?" + trueFalse(mapIcons()),
     method: 'GET',
   }).done(function(data) {
     var table = ('.full-metal')
@@ -85,7 +85,7 @@ var buildTable = function(e) {
   })
 }
 
-var addClickBtnListener = function(clickable) {
+var mapIcons = function(clickable) {
   var blizzIcon = document.querySelector('.Blizzard');
   var diabloIcon = document.querySelector('.Diablo');
   var scIcon = document.querySelector('.StarCraft');
@@ -96,6 +96,12 @@ var addClickBtnListener = function(clickable) {
   var supIcon = document.querySelector('.Support');
   var assnIcon = document.querySelector('.Assassin');
   return mapHighlighted = buildObject([tankIcon, specIcon, supIcon, assnIcon, blizzIcon, diabloIcon, scIcon, wcIcon, owIcon]);
+}
+
+var addPickButtonListener = function(clickable){
+  clickable.addEventListener('click', function(e) {
+    
+  })
 }
 
 var trueFalse = function(heroMap) {
