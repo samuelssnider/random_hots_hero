@@ -120,7 +120,6 @@ var buildObject = function(targets) {
   var mh = targets.map(target => {
     var hObj = {};
     hObj[target.classList[0]] = target.classList.value.includes('highlighted')
-    hObj["hidden"] = !hObj[target.classList[0]]
     return hObj
   });
   return mh
