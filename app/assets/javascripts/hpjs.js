@@ -110,7 +110,6 @@ var addPickButtonListener = function(clickable){
       url: API + '/api/v1/heroes' + "?" + eachVar(mapIcons()),
       method: 'GET',
     }).done(function(data) {
-      console.log("Hey")
     }).fail(function(data) {
       handleError();
     })
@@ -119,7 +118,7 @@ var addPickButtonListener = function(clickable){
 
 var eachVar = function(mapIcons){
   var mi = mapIcons.map(value => {
-    console.log(value.entires)
+    console.log(value)
   })
 }
 
