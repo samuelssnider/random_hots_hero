@@ -3,8 +3,6 @@ module Api
     class HeroesController < ActionController::API
       def index
         render json: Hero.all
-        paramaterss = JSON.parse(params)
-        require 'pry'; binding.pry
       end
       
       def show
