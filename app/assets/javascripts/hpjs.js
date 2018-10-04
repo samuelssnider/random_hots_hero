@@ -105,9 +105,8 @@ var buildMap = function(e) {
 var addPickButtonListener = function(clickable){
   clickable.addEventListener('click', function(e) {
     var tF  = buildObject(buildMap());
-    console.log(tF)
     return $.ajax({
-      url: API + '/api/v1/heroes?' + tF,
+      url: API + '/api/v1/heroes?map=' + tF,
       method: 'GET',
       dataType: "json",
       data: "json=" + escape(JSON.stringify(tF)),
@@ -139,5 +138,5 @@ var buildObject = function(targets) {
     console.log(hObj)
     return hObj
   });
-  return mh
+  return hObj
 }
