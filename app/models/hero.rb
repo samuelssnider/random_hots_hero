@@ -7,7 +7,7 @@ class Hero < ApplicationRecord
     Hero.find(Random.rand(top)+ 1);
   end
   
-  def self.tank
+  def self.tank    
     list = Hero.where(h_class: "Warrior")
     list.shuffle[0]
   end

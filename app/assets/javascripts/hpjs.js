@@ -105,11 +105,15 @@ var buildMap = function(e) {
 
 var addPickButtonListener = function(clickable){
   clickable.addEventListener('click', function(e) {
-    var tF  = buildObject(buildMap())
+    var tF  = mapIcons
     return $.ajax({
-      url: API + '/api/v1/heroes' + "?" + eachVar(mapIcons()),
+      url: API + '/api/v1/heroes',
       method: 'GET',
+      dataType: "json",
+      data: "json=" + escape(JSON.stringify(tF)),
+      processData: false,
     }).done(function(data) {
+      console.log(data)
     }).fail(function(data) {
       handleError();
     })
@@ -133,6 +137,7 @@ var buildObject = function(targets) {
   var mh = targets.map(target => {
     var hObj = {};
     hObj[target.classList[0]] = target.classList.value.includes('highlighted')
+    console.log(hObj)
     return hObj
   });
   return mh

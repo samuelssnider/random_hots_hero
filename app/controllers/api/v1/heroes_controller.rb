@@ -9,6 +9,8 @@ module Api
         @deity = Hero.find(params[:id])
         render json: @deity
       end
+      
+      
     end
   end
 end
