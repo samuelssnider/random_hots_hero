@@ -113,7 +113,6 @@ var addPickButtonListener = function(clickable){
       data: "json=" + escape(JSON.stringify(tF)),
       processData: false,
     }).done(function(data) {
-      console.log(data)
     }).fail(function(data) {
       handleError();
     })
@@ -129,15 +128,15 @@ var trueFalse = function(heroMap) {
 }
 
 var buildObject = function(targets) {
+  var hObj = "";
   var mh = targets.forEach(target => {
-    var hObj = "";
-    if(target.classList.value.includes('highlighted')){
-      hObj.concat('y');
-    }
-    else{
-      hObj +='n';
-    }
-    console.log(target.classList.value.includes('highlighted'))
+      if(target.classList.value.includes('highlighted')){
+        hObj += 'y';
+      }
+      else{
+        hObj +='n';
+      }
+    console.log(hObj)
     return hObj
   });
   return mh
