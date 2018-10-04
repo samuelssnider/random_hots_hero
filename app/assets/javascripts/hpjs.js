@@ -104,10 +104,10 @@ var buildMap = function(e) {
 
 var addPickButtonListener = function(clickable){
   clickable.addEventListener('click', function(e) {
-    var tF  = mapIcons();
+    var tF  = buildObject(buildMap());
     console.log(tF)
     return $.ajax({
-      url: API + '/api/v1/heroes',
+      url: API + '/api/v1/heroes?' + tF,
       method: 'GET',
       dataType: "json",
       data: "json=" + escape(JSON.stringify(tF)),
