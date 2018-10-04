@@ -104,7 +104,8 @@ var buildMap = function(e) {
 
 var addPickButtonListener = function(clickable){
   clickable.addEventListener('click', function(e) {
-    var tF  = mapIcons
+    var tF  = mapIcons();
+    console.log(tF)
     return $.ajax({
       url: API + '/api/v1/heroes',
       method: 'GET',
@@ -119,11 +120,6 @@ var addPickButtonListener = function(clickable){
   })
 }
 
-var eachVar = function(mapIcons){
-  var mi = mapIcons.map(value => {
-    console.log(value)
-  })
-}
 
 var trueFalse = function(heroMap) {
   var map = heroMap.map(value => {
@@ -136,11 +132,13 @@ var buildObject = function(targets) {
   var mh = targets.forEach(target => {
     var hObj = "";
     if(target.classList.value.includes('highlighted')){
-      hObj.push('y')
+      hObj.concat('y');
     }
     else{
-      hObj.push('n')
+      hObj +='n';
     }
+    console.log(target.classList.value.includes('highlighted'))
+    return hObj
   });
   return mh
 }
