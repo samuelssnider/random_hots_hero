@@ -16,7 +16,6 @@ ready(function(){
   addClassListeners();
   buildTable();
   addGameListeners();
-  mapIcons();
   addPickButtonListener(document.querySelector('.pick-btn'));
 });
 
@@ -134,11 +133,14 @@ var trueFalse = function(heroMap) {
 }
 
 var buildObject = function(targets) {
-  var mh = targets.map(target => {
-    var hObj = {};
-    hObj[target.classList[0]] = target.classList.value.includes('highlighted')
-    console.log(hObj)
-    return hObj
+  var mh = targets.forEach(target => {
+    var hObj = "";
+    if(target.classList.value.includes('highlighted')){
+      hObj.push('y')
+    }
+    else{
+      hObj.push('n')
+    }
   });
   return mh
 }
