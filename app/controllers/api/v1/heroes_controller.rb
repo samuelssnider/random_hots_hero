@@ -2,10 +2,12 @@ module Api
   module V1
     class HeroesController < ActionController::API
       def index
-        require 'pry';
-        binding.pry
-        map_it(params["map"])
-        render json: Hero.all
+        if params["map"]
+          map_it(params["map"])
+        else 
+          render json: Hero.all
+        end
+        
       end
       
       def show
@@ -16,8 +18,11 @@ module Api
       
       
       def map_it(input)
+        req = input.chars
+        classes = req[0..3]
+        games = req[4..8]
         require 'pry';
-        binding.pry
+        binding.pry;
       end
       
       
