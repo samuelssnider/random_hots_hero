@@ -16,7 +16,7 @@ ready(function(){
   addClassListeners();
   buildTable();
   addGameListeners();
-  addClickBtnListener(document.querySelector('.pick-btn'));
+  addPickButtonListener(document.querySelector('.pick-btn'));
 });
 
 var addClickListener = function(clickable) {
@@ -68,7 +68,7 @@ var appendHeroToTable = function(table, hero, begEnd) {
 
 var buildTable = function(e) {
   return $.ajax({
-    url: API + '/api/v1/heroes' + "?" + trueFalse(addClickBtnListener()),
+    url: API + '/api/v1/heroes',
     method: 'GET',
   }).done(function(data) {
     var table = ('.full-metal')
@@ -85,7 +85,11 @@ var buildTable = function(e) {
   })
 }
 
-var addClickBtnListener = function(clickable) {
+var mapIcons = function(clickable) {
+  return buildObject(buildMap());
+}
+
+var buildMap = function(e) {
   var blizzIcon = document.querySelector('.Blizzard');
   var diabloIcon = document.querySelector('.Diablo');
   var scIcon = document.querySelector('.StarCraft');
@@ -95,8 +99,25 @@ var addClickBtnListener = function(clickable) {
   var specIcon = document.querySelector('.Specialist');
   var supIcon = document.querySelector('.Support');
   var assnIcon = document.querySelector('.Assassin');
-  return mapHighlighted = buildObject([tankIcon, specIcon, supIcon, assnIcon, blizzIcon, diabloIcon, scIcon, wcIcon, owIcon]);
+  return [tankIcon, specIcon, supIcon, assnIcon, blizzIcon, diabloIcon, scIcon, wcIcon, owIcon]
 }
+
+var addPickButtonListener = function(clickable){
+  clickable.addEventListener('click', function(e) {
+    var tF  = buildObject(buildMap());
+    return $.ajax({
+      url: API + '/api/v1/heroes?map=' + tF,
+      method: 'GET',
+      dataType: "json",
+      data: "json=" + escape(JSON.stringify(tF)),
+      processData: false,
+    }).done(function(data) {
+    }).fail(function(data) {
+      handleError();
+    })
+  })
+}
+
 
 var trueFalse = function(heroMap) {
   var map = heroMap.map(value => {
@@ -106,11 +127,16 @@ var trueFalse = function(heroMap) {
 }
 
 var buildObject = function(targets) {
-  var mh = targets.map(target => {
-    var hObj = {};
-    hObj[target.classList[0]] = target.classList.value.includes('highlighted')
-    hObj["hidden"] = !hObj[target.classList[0]]
+  var hObj = "";
+  var mh = targets.forEach(target => {
+      if(target.classList.value.includes('highlighted')){
+        hObj += 'y';
+      }
+      else{
+        hObj +='n';
+      }
+    console.log(hObj)
     return hObj
   });
-  return mh
+  return hObj
 }
