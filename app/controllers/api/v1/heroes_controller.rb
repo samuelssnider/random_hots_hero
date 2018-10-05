@@ -21,11 +21,30 @@ module Api
         req = input.chars
         classes = req[0..3]
         games = req[4..8]
-        require 'pry';
-        binding.pry;
+        sorted_class_heroes = class_path(classes)
+        render json: sorted_class_heroes[Random.rand(sorted_class_heroes.count)+ 1]
+        # sorted_game_heroes = games_path(games)
       end
       
-      
+      def class_path(classes)
+        heroes = []
+        if (classes == ["n","n","n","n"] || classes == ["y","y","y","y"])
+          heroes = Hero.all
+        end
+        if classes[0] == "y"
+          heroes.push(*Hero.where(h_class: "Warrior"))
+        end
+        if classes[1] == "y"
+          heroes.push(*Hero.where(h_class: "Specialist"))
+        end
+        if classes[2] == "y"
+          heroes.push(*Hero.where(h_class: "Support"))
+        end
+        if classes[3] == "y"
+          heroes.push(*Hero.where(h_class: "Assassin"))
+        end
+        heroes
+      end
     end
   end
 end
