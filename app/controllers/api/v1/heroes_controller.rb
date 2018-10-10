@@ -22,8 +22,9 @@ module Api
         classes = req[0..3]
         games = req[4..8]
         sorted_class_heroes = class_path(classes)
+        sorted_game_heroes = games_path(games)
+        require 'pry'; binding.pry;
         render json: sorted_class_heroes[Random.rand(sorted_class_heroes.count)+ 1]
-        # sorted_game_heroes = games_path(games)
       end
       
       def class_path(classes)
@@ -45,6 +46,31 @@ module Api
         end
         heroes
       end
+      
+      def games_path(games)
+        heroes = []
+        if (games == ["n","n","n","n","n"] || games == ["y","y","y","y","y"])
+          heroes = Hero.all
+        else
+          if games[0] == "y"
+            heroes.push(*Hero.where(h_class: "Blizzard"))
+          end
+          if games[1] == "y"
+            heroes.push(*Hero.where(h_class: "Diablo"))
+          end
+          if games[2] == "y"
+            heroes.push(*Hero.where(h_class: "StarCraft"))
+          end
+          if games[3] == "y"
+            heroes.push(*Hero.where(h_class: "Warcraft"))
+          end
+          if games[4] == "y"
+            heroes.push(*Hero.where(h_class: "Overwatch"))
+          end
+        end
+        heroes
+      end
+      
     end
   end
 end

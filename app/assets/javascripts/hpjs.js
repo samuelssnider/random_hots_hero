@@ -108,10 +108,10 @@ var addPickButtonListener = function(clickable){
     return $.ajax({
       url: API + '/api/v1/heroes?map=' + tF,
       method: 'GET',
-      dataType: "json",
-      data: "json=" + escape(JSON.stringify(tF)),
       processData: false,
     }).done(function(data) {
+      var bCol = document.querySelector('.b-col');
+      appendHeroToTable(bCol, data, [true, true])
     }).fail(function(data) {
       handleError();
     })
