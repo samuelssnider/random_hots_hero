@@ -23,8 +23,17 @@ module Api
         games = req[4..8]
         sorted_class_heroes = class_path(classes)
         sorted_game_heroes = games_path(games)
+        mixture = commonality(sorted_game_heroes, sorted_class_heroes)
         require 'pry'; binding.pry;
-        render json: sorted_class_heroes[Random.rand(sorted_class_heroes.count)+ 1]
+        render json: mixture[Random.rand(sorted_class_heroes.count)+ 1]
+      end
+      
+      def commonality(sgh, sch)
+        sgh.map do |ghero|
+          if sch.any? {|chero| ghero == chero}
+            ghero
+          end
+        end
       end
       
       def class_path(classes)
@@ -53,19 +62,19 @@ module Api
           heroes = Hero.all
         else
           if games[0] == "y"
-            heroes.push(*Hero.where(h_class: "Blizzard"))
+            heroes.push(*Hero.where(h_game: "Blizzard"))
           end
           if games[1] == "y"
-            heroes.push(*Hero.where(h_class: "Diablo"))
+            heroes.push(*Hero.where(h_game: "Diablo"))
           end
           if games[2] == "y"
-            heroes.push(*Hero.where(h_class: "StarCraft"))
+            heroes.push(*Hero.where(h_game: "StarCraft"))
           end
           if games[3] == "y"
-            heroes.push(*Hero.where(h_class: "Warcraft"))
+            heroes.push(*Hero.where(h_game: "Warcraft"))
           end
           if games[4] == "y"
-            heroes.push(*Hero.where(h_class: "Overwatch"))
+            heroes.push(*Hero.where(h_game: "Overwatch"))
           end
         end
         heroes

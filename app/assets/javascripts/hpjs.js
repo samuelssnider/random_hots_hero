@@ -135,7 +135,6 @@ var buildObject = function(targets) {
       else{
         hObj +='n';
       }
-    console.log(hObj)
     return hObj
   });
   return hObj
