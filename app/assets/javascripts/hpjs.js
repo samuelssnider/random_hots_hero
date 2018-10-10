@@ -1,4 +1,4 @@
-var API = "http://localhost:3000"
+var API = "https://hotsrandom.herokuapp.com"
 'use strict'
 function ready(callback){
     // in case the document is already rendered
@@ -108,10 +108,10 @@ var addPickButtonListener = function(clickable){
     return $.ajax({
       url: API + '/api/v1/heroes?map=' + tF,
       method: 'GET',
-      dataType: "json",
-      data: "json=" + escape(JSON.stringify(tF)),
       processData: false,
     }).done(function(data) {
+      var bCol = document.querySelector('.b-col');
+      appendHeroToTable(bCol, data, [true, true])
     }).fail(function(data) {
       handleError();
     })
@@ -135,7 +135,6 @@ var buildObject = function(targets) {
       else{
         hObj +='n';
       }
-    console.log(hObj)
     return hObj
   });
   return hObj
