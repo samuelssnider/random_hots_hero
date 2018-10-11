@@ -24,7 +24,7 @@ module Api
         sorted_class_heroes = class_path(classes)
         sorted_game_heroes = games_path(games)
         mixture = commonality(sorted_game_heroes, sorted_class_heroes).compact
-        render json: mixture[Random.rand(mixture.count)+ 1]
+        render json: mixture[Random.rand(mixture.count)]
       end
       
       def commonality(sgh, sch)
