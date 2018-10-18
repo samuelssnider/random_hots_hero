@@ -99,6 +99,8 @@ var buildMap = function(e) {
   return [tankIcon, specIcon, supIcon, assnIcon, blizzIcon, diabloIcon, scIcon, wcIcon, owIcon]
 }
 
+var pickCounter = 0
+
 var addPickButtonListener = function(clickable){
   clickable.addEventListener('click', function(e) {
     var tF  = buildObject(buildMap());
@@ -108,11 +110,17 @@ var addPickButtonListener = function(clickable){
       processData: false,
     }).done(function(data) {
       var bCol = document.querySelector('.b-col');
-      appendHeroToTable(bCol, data, [true, true])
+      var newRow = rowCalc()
+      appendHeroToTable(bCol, data, newRow)
+      pickCounter ++
     }).fail(function(data) {
       handleError();
     })
   })
+}
+
+var rowCalc = function(){
+  
 }
 
 
