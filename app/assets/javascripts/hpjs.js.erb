@@ -1,4 +1,4 @@
-var API = ENV['base_url']
+var API = "http://localhost:3000"
 'use strict'
 function ready(callback){
     // in case the document is already rendered
@@ -57,10 +57,7 @@ var appendHeroToTable = function(table, hero, begEnd) {
   if (begEnd[0]){$(table).append('<tr>')}
   if(hero){
     $(table).append(`
-      <td>${hero["h_name"]}</td>
-      <td class="${hero["h_name"]} ${hero["h_game"]} ${hero["h_class"]}"> 
-        <input type="checkbox" checked>
-      </td>
+      <td class="${hero["h_name"]} ${hero["h_game"]} ${hero["h_class"]}">${hero["h_name"]}</td>
     `)
   }
   if (begEnd[1]){$(table).append('</tr>')}
