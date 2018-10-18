@@ -120,7 +120,16 @@ var addPickButtonListener = function(clickable){
 }
 
 var rowCalc = function(){
-  
+  if(pickCounter % 4 === 0){
+    theEnds = [true, false]
+  }
+  else if (pickCounter % 4 === 3){
+    theEnds = [false, true]
+  }
+  else{
+    theEnds = [false, false]
+  }
+  return theEnds
 }
 
 
