@@ -114,16 +114,18 @@ var addPickButtonListener = function(clickable){
       appendHeroToTable(bCol, data, newRow)
       pickCounter ++
     }).fail(function(data) {
-      handleError();
+      var bCol = document.querySelector('.b-col');
+      var newRow = rowCalc()
+      appendHeroToTable[bCol,{"h_name": "No Match"}, newRow];
     })
   })
 }
 
 var rowCalc = function(){
-  if(pickCounter % 4 === 0){
+  if(pickCounter % 5 === 0){
     theEnds = [true, false]
   }
-  else if (pickCounter % 4 === 3){
+  else if (pickCounter % 5 === 4){
     theEnds = [false, true]
   }
   else{
