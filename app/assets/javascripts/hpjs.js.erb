@@ -1,4 +1,4 @@
-var API = "http://localhost:3000"
+var API = "https://hotsrandom.herokuapp.com/"
 'use strict'
 function ready(callback){
     // in case the document is already rendered
