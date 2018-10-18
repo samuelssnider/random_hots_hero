@@ -57,10 +57,7 @@ var appendHeroToTable = function(table, hero, begEnd) {
   if (begEnd[0]){$(table).append('<tr>')}
   if(hero){
     $(table).append(`
-      <td>${hero["h_name"]}</td>
-      <td class="${hero["h_name"]} ${hero["h_game"]} ${hero["h_class"]}"> 
-        <input type="checkbox" checked>
-      </td>
+      <td class="${hero["h_name"]} ${hero["h_game"]} ${hero["h_class"]}">${hero["h_name"]}</td>
     `)
   }
   if (begEnd[1]){$(table).append('</tr>')}
@@ -102,6 +99,8 @@ var buildMap = function(e) {
   return [tankIcon, specIcon, supIcon, assnIcon, blizzIcon, diabloIcon, scIcon, wcIcon, owIcon]
 }
 
+var pickCounter = 0
+
 var addPickButtonListener = function(clickable){
   clickable.addEventListener('click', function(e) {
     var tF  = buildObject(buildMap());
@@ -111,11 +110,28 @@ var addPickButtonListener = function(clickable){
       processData: false,
     }).done(function(data) {
       var bCol = document.querySelector('.b-col');
-      appendHeroToTable(bCol, data, [true, true])
+      var newRow = rowCalc()
+      appendHeroToTable(bCol, data, newRow)
+      pickCounter ++
     }).fail(function(data) {
-      handleError();
+      var bCol = document.querySelector('.b-col');
+      var newRow = rowCalc()
+      appendHeroToTable[bCol,{"h_name": "No Match"}, newRow];
     })
   })
+}
+
+var rowCalc = function(){
+  if(pickCounter % 5 === 0){
+    theEnds = [true, false]
+  }
+  else if (pickCounter % 5 === 4){
+    theEnds = [false, true]
+  }
+  else{
+    theEnds = [false, false]
+  }
+  return theEnds
 }
 
 
