@@ -14,7 +14,7 @@ function ready(callback){
 
 ready(function(){
   addClassListeners();
-  buildTable();
+  // buildTable();
   addGameListeners();
   addPickButtonListener(document.querySelector('.pick-btn'));
 });
@@ -63,24 +63,24 @@ var appendHeroToTable = function(table, hero, begEnd) {
   if (begEnd[1]){$(table).append('</tr>')}
 }
 
-var buildTable = function(e) {
-  return $.ajax({
-    url: API + '/api/v1/heroes',
-    method: 'GET',
-  }).done(function(data) {
-    var table = ('.full-metal')
-      for(var i = 0;i < (data.length); i += 8) {
-        for(var k = 0; k < 8; k++) {
-          beg = false; end = false
-          if(k === 0){beg = true}
-          if(k === 0){end = true}
-          appendHeroToTable(table, data[i + k], [beg, end])
-        }
-      }
-  }).fail(function(data) {
-    handleError();
-  })
-}
+// var buildTable = function(e) {
+//   return $.ajax({
+//     url: API + '/api/v1/heroes',
+//     method: 'GET',
+//   }).done(function(data) {
+//     var table = ('.full-metal')
+//       for(var i = 0;i < (data.length); i += 8) {
+//         for(var k = 0; k < 8; k++) {
+//           beg = false; end = false
+//           if(k === 0){beg = true}
+//           if(k === 0){end = true}
+//           appendHeroToTable(table, data[i + k], [beg, end])
+//         }
+//       }
+//   }).fail(function(data) {
+//     handleError();
+//   })
+// }
 
 var mapIcons = function(clickable) {
   return buildObject(buildMap());
