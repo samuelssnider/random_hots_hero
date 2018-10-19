@@ -15,28 +15,35 @@ function ready(callback){
 ready(function(){
   addClassListeners();
   // buildTable();
-  addReplayListeners(buildButtons);
+  addReplayListeners(buildButtons());
   addGameListeners();
   addPickButtonListener(document.querySelector('.pick-btn'));
 });
 
 var buildButtons = function(){
-  
+  var trBtn = document.querySelector('.true-random-button');
+  var waBtn = document.querySelector('.warrior-button');
+  var spBtn = document.querySelector('.specialist-button');
+  var suBtn = document.querySelector('.support-button');
+  var bzBtn = document.querySelector('.assassin-button');
+  var asBtn = document.querySelector('.warcraft-button');
+  var wcBtn = document.querySelector('.starcraft-button');
+  var scBtn = document.querySelector('.diablo-button');
+  var dbBtn = document.querySelector('.overwatch-button');
+  var owBtn = document.querySelector('.blizzard-button');
+  return [trBtn, waBtn, spBtn, suBtn, bzBtn, asBtn, wcBtn, scBtn, dbBtn, owBtn]
 }
 
 var addReplayListeners = function(buttons){
   buttons.forEach(function(replayEx) {
-    var trBtn = document.querySelector('.true-random-button');
-    var trBtn = document.querySelector('.true-random-button');
-    var trBtn = document.querySelector('.true-random-button');
-    var trBtn = document.querySelector('.true-random-button');
-    var trBtn = document.querySelector('.true-random-button');
-    var trBtn = document.querySelector('.true-random-button');
-    var trBtn = document.querySelector('.true-random-button');
-    var trBtn = document.querySelector('.true-random-button');
-    var trBtn = document.querySelector('.true-random-button');
-    var trBtn = document.querySelector('.true-random-button');
+    replayEx.addEventListener('click', function(e) {
+      shootRequest(this)
+    })
   })
+}
+
+var shootRequest = function(thing){
+  console.log(thing)
 }
 
 var addClickListener = function(clickable) {
