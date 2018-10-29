@@ -37,18 +37,21 @@ var buildButtons = function(){
 var addReplayListeners = function(buttons){
   buttons.forEach(function(replayEx) {
     replayEx.addEventListener('click', function(e) {
-      shootRequest(this)
+      // shootRequest(this)
     })
   })
 }
 
-var randomHeroFunc = function(heroButton){
-  return "me"
+var appendThing = function(level, name){
+  console.log(level);
+  console.log(name);
+  level.parentElement.previousElementSibling.innerText = (name)
+  return name;
 }
 
-var shootRequest = function(thing){
-  thing.parentElement.previousElementSibling.innerText = randomHeroFunc(thing)
-}
+// var shootRequest = function(thing){
+//   thing.parentElement.previousElementSibling.innerText = (thing)
+// }
 
 var addClickListener = function(clickable) {
   clickable.addEventListener('click', function(e) {
