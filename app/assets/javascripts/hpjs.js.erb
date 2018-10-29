@@ -42,8 +42,12 @@ var addReplayListeners = function(buttons){
   })
 }
 
+var randomHeroFunc = function(heroButton){
+  return "me"
+}
+
 var shootRequest = function(thing){
-  console.log(thing)
+  thing.parentElement.previousElementSibling.innerText = randomHeroFunc(thing)
 }
 
 var addClickListener = function(clickable) {
