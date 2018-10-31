@@ -3,10 +3,12 @@ class Hero < ApplicationRecord
   # enum h_class: [:Warrior, :Specialist, :Support, :Assassin]
   # enum h_game: [:Warcraft, :StarCraft, :Diablo, :Overwatch, :Blizzard]
   def game
-    require pry; binding.pry
-    Game.find(game_id)
+    Game.find(self[:game_id])
   end
   
+  def hero_class
+    HeroClass.find(self[:hero_class_id])
+  end
   def self.random
     top = (self.count)
     Hero.find(Random.rand(top)+ 1);
