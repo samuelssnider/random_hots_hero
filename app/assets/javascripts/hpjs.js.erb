@@ -37,17 +37,25 @@ var buildButtons = function(){
 var addReplayListeners = function(buttons){
   buttons.forEach(function(replayEx) {
     replayEx.addEventListener('click', function(e) {
-      // shootRequest(this)
+      var gameOrClass = level.className.split("-")[0].charAt(0).toUpperCase()
+      shootRequest(this, gameOrClass)
     })
   })
 }
 
-var appendThing = function(level, name){
-  level.parentElement.previousElementSibling.innerText = (name)
+var shooRequest = function(level, name){
+  return $.ajax({
+    url: API + `/api/v1/heroes?gc=${name}`
+    method: 'GET',
+    processData: false,
+  }).done(function(data) {
+    level.parentElement.previousElementSibling.innerText = (data)
+  }).fail(function(data) {
+  })
+  
 }
 
 // var shootRequest = function(thing){
-//   thing.parentElement.previousElementSibling.innerText = (thing)
 // }
 
 var addClickListener = function(clickable) {

@@ -4,7 +4,9 @@ module Api
       def index
         if params["map"]
           map_it(params["map"])
-        else 
+        elsif parmas["gc"]
+          
+        else
           render json: Hero.all
         end
         
