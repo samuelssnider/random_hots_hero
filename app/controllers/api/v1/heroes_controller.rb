@@ -5,7 +5,6 @@ module Api
         if params["map"]
           map_it(params["map"])
         elsif parmas["gc"]
-          
         else
           render json: Hero.all
         end
@@ -43,16 +42,16 @@ module Api
           heroes = Hero.all
         end
         if classes[0] == "y"
-          heroes.push(*Hero.where(h_class: "Warrior"))
+          heroes.push(*Hero.where(hero_class: "Warrior"))
         end
         if classes[1] == "y"
-          heroes.push(*Hero.where(h_class: "Specialist"))
+          heroes.push(*Hero.where(hero_class: "Specialist"))
         end
         if classes[2] == "y"
-          heroes.push(*Hero.where(h_class: "Support"))
+          heroes.push(*Hero.where(hero_class: "Support"))
         end
         if classes[3] == "y"
-          heroes.push(*Hero.where(h_class: "Assassin"))
+          heroes.push(*Hero.where(hero_class: "Assassin"))
         end
         heroes
       end
@@ -63,16 +62,16 @@ module Api
           heroes = Hero.all
         else
           if games[0] == "y"
-            heroes.push(*Hero.where(h_game: "Blizzard"))
+            heroes.push(*Hero.where(game: "Blizzard"))
           end
           if games[1] == "y"
-            heroes.push(*Hero.where(h_game: "Diablo"))
+            heroes.push(*Hero.where(game: "Diablo"))
           end
           if games[2] == "y"
-            heroes.push(*Hero.where(h_game: "StarCraft"))
+            heroes.push(*Hero.where(game: "StarCraft"))
           end
           if games[3] == "y"
-            heroes.push(*Hero.where(h_game: "Warcraft"))
+            heroes.push(*Hero.where(game: "Warcraft"))
           end
           if games[4] == "y"
             heroes.push(*Hero.where(h_game: "Overwatch"))

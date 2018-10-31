@@ -10,16 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_16_162841) do
+ActiveRecord::Schema.define(version: 2018_10_31_131157) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "games", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "hero_classes", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "heros", force: :cascade do |t|
     t.string "h_name"
-    t.string "h_class"
-    t.string "h_game"
+    t.bigint "hero_class_id"
+    t.bigint "game_id"
     t.date "h_created_at"
+    t.index ["game_id"], name: "index_heros_on_game_id"
+    t.index ["hero_class_id"], name: "index_heros_on_hero_class_id"
   end
 
 end

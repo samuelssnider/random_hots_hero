@@ -1,6 +1,11 @@
 class Hero < ApplicationRecord
+  attr_reader :game_id 
   # enum h_class: [:Warrior, :Specialist, :Support, :Assassin]
   # enum h_game: [:Warcraft, :StarCraft, :Diablo, :Overwatch, :Blizzard]
+  def game
+    require pry; binding.pry
+    Game.find(game_id)
+  end
   
   def self.random
     top = (self.count)
@@ -8,47 +13,47 @@ class Hero < ApplicationRecord
   end
   
   def self.tank    
-    list = Hero.where(h_class: "Warrior")
+    list = Hero.where(hero_class: "Warrior")
     list.shuffle[0]
   end
   
   def self.spec
-    list = Hero.where(h_class: "Specialist")
+    list = Hero.where(hero_class: "Specialist")
     list.shuffle[0]
   end
   
   def self.sup
-    list = Hero.where(h_class: "Support")
+    list = Hero.where(hero_class: "Support")
     list.shuffle[0]
   end
   
   def self.assn
-    list = Hero.where(h_class: "Assassin")
+    list = Hero.where(hero_class: "Assassin")
     list.shuffle[0]
   end
   
   def self.wc
-    list = Hero.where(h_game: "Warcraft")
+    list = Hero.where(game: "Warcraft")
     list.shuffle[0]
   end
   
   def self.sc
-    list = Hero.where(h_game: "StarCraft")
+    list = Hero.where(game: "StarCraft")
     list.shuffle[0]
   end
   
   def self.dibs
-    list = Hero.where(h_game: "Diablo")
+    list = Hero.where(game: "Diablo")
     list.shuffle[0]
   end
   
   def self.ow
-    list = Hero.where(h_game: "Overwatch")
+    list = Hero.where(game: "Overwatch")
     list.shuffle[0]
   end
   
   def self.blizz
-    list = Hero.where(h_game: "Blizzard")
+    list = Hero.where(game: "Blizzard")
     list.shuffle[0]
   end
   
