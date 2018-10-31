@@ -1,3 +1,3 @@
 class HeroClass < ApplicationRecord
-  # belongs_to :hero
+  belongs_to :hero
 end

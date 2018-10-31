@@ -1,9 +1,11 @@
 class Hero < ApplicationRecord
   attr_reader :game_id 
-  has_one :game
-  has_one :hero_class
   # enum h_class: [:Warrior, :Specialist, :Support, :Assassin]
   # enum h_game: [:Warcraft, :StarCraft, :Diablo, :Overwatch, :Blizzard]
+  def game
+    require pry; binding.pry
+    Game.find(game_id)
+  end
   
   def self.random
     top = (self.count)
