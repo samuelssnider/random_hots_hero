@@ -5,8 +5,18 @@ module Api
         if params["map"]
           map_it(params["map"])
         elsif params["gc"]
-          render json: Hero.where(hero_class_id: HeroClass.find_by(name:params["gc"].capitalize).id).shuffle[0]
-          # render json: Hero.where(game: Game.find_by(name:params["gc"].capitalize)).shuffle[0]
+          if params["gc"] == "specialist" || params["gc"] == "support" || params["gc"] == "warrior"  || params["gc"] == "assassin" 
+            render json: Hero.where(hero_class_id: HeroClass.find_by(name:params["gc"].capitalize).id).shuffle[0]
+          elsif params["gc"] == "warcraft" || params["gc"] == "starcraft" || params["gc"] == "diablo"  || params["gc"] == "overwatch" || params["gc"] == "blizzard"
+            if params["gc"] == "starcraft"
+              sc = "StarCraft"
+              render json: Hero.where(game_id: Game.find_by(name:sc).id).shuffle[0]
+            else
+              render json: Hero.where(game_id: Game.find_by(name:params["gc"].capitalize).id).shuffle[0]
+            end
+          else
+          render json: Hero.all
+        end
         else
           render json: Hero.all
         end
