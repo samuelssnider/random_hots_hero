@@ -4,7 +4,9 @@ module Api
       def index
         if params["map"]
           map_it(params["map"])
-        elsif parmas["gc"]
+        elsif params["gc"]
+          render json: Hero.where(hero_class_id: HeroClass.find_by(name:params["gc"].capitalize).id).shuffle[0]
+          # render json: Hero.where(game: Game.find_by(name:params["gc"].capitalize)).shuffle[0]
         else
           render json: Hero.all
         end
@@ -42,16 +44,16 @@ module Api
           heroes = Hero.all
         end
         if classes[0] == "y"
-          heroes.push(*Hero.where(hero_class: "Warrior"))
+          heroes.push(*Hero.where(hero_class_id: 1))
         end
         if classes[1] == "y"
-          heroes.push(*Hero.where(hero_class: "Specialist"))
+          heroes.push(*Hero.where(hero_class_id: 2))
         end
         if classes[2] == "y"
-          heroes.push(*Hero.where(hero_class: "Support"))
+          heroes.push(*Hero.where(hero_class_id: 3))
         end
         if classes[3] == "y"
-          heroes.push(*Hero.where(hero_class: "Assassin"))
+          heroes.push(*Hero.where(hero_class_id: 4))
         end
         heroes
       end
@@ -62,19 +64,19 @@ module Api
           heroes = Hero.all
         else
           if games[0] == "y"
-            heroes.push(*Hero.where(game: "Blizzard"))
+            heroes.push(*Hero.where(game_id: 5))
           end
           if games[1] == "y"
-            heroes.push(*Hero.where(game: "Diablo"))
+            heroes.push(*Hero.where(game_id: 3))
           end
           if games[2] == "y"
-            heroes.push(*Hero.where(game: "StarCraft"))
+            heroes.push(*Hero.where(game_id: 2))
           end
           if games[3] == "y"
-            heroes.push(*Hero.where(game: "Warcraft"))
+            heroes.push(*Hero.where(game_id: 1))
           end
           if games[4] == "y"
-            heroes.push(*Hero.where(h_game: "Overwatch"))
+            heroes.push(*Hero.where(game_id: 4))
           end
         end
         heroes

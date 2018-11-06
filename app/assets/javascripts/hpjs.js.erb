@@ -20,6 +20,7 @@ ready(function(){
   addPickButtonListener(document.querySelector('.pick-btn'));
 });
 
+
 var buildButtons = function(){
   var trBtn = document.querySelector('.true-random-button');
   var waBtn = document.querySelector('.warrior-button');
@@ -43,12 +44,18 @@ var addReplayListeners = function(buttons){
   })
 }
 
-var shooRequest = function(level, name){
+var appendThing = function(button, name){
+  shootRequest(button, name);
+}
+
+var shootRequest = function(level, name){
+  console.log(level)
   return $.ajax({
-    url: API + `/api/v1/heroes?gc=${name}`
+    url: API + `/api/v1/heroes?gc=${name}`,
     method: 'GET',
     processData: false,
   }).done(function(data) {
+    console.log(level);
     level.parentElement.previousElementSibling.innerText = (data);
   }).fail(function(data) {
   })
